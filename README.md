@@ -1,8 +1,12 @@
-CKEditor 5 classic editor build
+CKEditor 5 classic editor build combined with added Inline editor
 ========================================
+Superbuild by gecharita
 
 [![npm version](https://badge.fury.io/js/%40ckeditor%2Fckeditor5-build-classic.svg)](https://www.npmjs.com/package/@ckeditor/ckeditor5-build-classic)
+Classic
 [![Build Status](https://travis-ci.org/ckeditor/ckeditor5-build-classic.svg?branch=master)](https://travis-ci.org/ckeditor/ckeditor5-build-classic)
+Inline
+[![Build Status](https://travis-ci.org/ckeditor/ckeditor5-build-inline.svg?branch=master)](https://travis-ci.org/ckeditor/ckeditor5-build-inline)
 <br>
 [![Dependency Status](https://david-dm.org/ckeditor/ckeditor5-build-classic/status.svg)](https://david-dm.org/ckeditor/ckeditor5-build-classic)
 [![devDependency Status](https://david-dm.org/ckeditor/ckeditor5-build-classic/dev-status.svg)](https://david-dm.org/ckeditor/ckeditor5-build-classic?type=dev)
@@ -22,11 +26,6 @@ See:
 
 ## Quick start
 
-First, install the build from npm:
-
-```bash
-npm install --save @ckeditor/ckeditor5-build-classic
-```
 
 And use it in your website:
 
@@ -34,10 +33,20 @@ And use it in your website:
 <div id="editor">
 	<p>This is the editor content.</p>
 </div>
-<script src="./node_modules/@ckeditor/ckeditor5-build-classic/build/ckeditor.js"></script>
+<script src="/build/ckeditor.js"></script>
 <script>
-	ClassicEditor
-		.create( document.querySelector( '#editor' ) )
+	CKEDITOR.ClassicEditor
+		.create( document.querySelector( '#classic-editor' ) )
+		.then( editor => {
+			window.editor = editor;
+		} )
+		.catch( error => {
+			console.error( 'There was a problem initializing the editor.', error );
+		} );
+</script>
+<script>
+	CKEDITOR.InlineEditor
+		.create( document.querySelector( '#inline-editor' ) )
 		.then( editor => {
 			window.editor = editor;
 		} )
@@ -50,12 +59,12 @@ And use it in your website:
 Or in your JavaScript application:
 
 ```js
-import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import CKEDITOR from '@ckeditor/ckeditor5-build-classic';
 
 // Or using the CommonJS version:
 // const ClassicEditor = require( '@ckeditor/ckeditor5-build-classic' );
 
-ClassicEditor
+CKEDITOR.ClassicEditor
 	.create( document.querySelector( '#editor' ) )
 	.then( editor => {
 		window.editor = editor;
