@@ -7,7 +7,6 @@
 import ClassicEditorBase from '@ckeditor/ckeditor5-editor-classic/src/classiceditor';
 import InlineEditorBase from '@ckeditor/ckeditor5-editor-inline/src/inlineeditor';
 
-import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 import UploadAdapter from '@ckeditor/ckeditor5-adapter-ckfinder/src/uploadadapter';
 import Autoformat from '@ckeditor/ckeditor5-autoformat/src/autoformat';
 import Bold from '@ckeditor/ckeditor5-basic-styles/src/bold';
@@ -34,11 +33,16 @@ import TextTransformation from '@ckeditor/ckeditor5-typing/src/texttransformatio
 import Font from '@ckeditor/ckeditor5-font/src/font';
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
 import TodoList from '@ckeditor/ckeditor5-list/src/todolist';
+import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
+import Clipboard from '@ckeditor/ckeditor5-clipboard/src/clipboard';
+import Typing from '@ckeditor/ckeditor5-typing/src/typing';
+import Undo from '@ckeditor/ckeditor5-undo/src/undo';
 
 class ClassicEditor extends ClassicEditorBase {}
 class InlineEditor extends InlineEditorBase {}
+class InlineEditorSingleParagraph extends InlineEditorBase {}
 
-const plugins = [
+const pluginsAll = [
 	Essentials,
 	UploadAdapter,
 	Autoformat,
@@ -68,9 +72,19 @@ const plugins = [
 	TodoList
 ];
 
+// ---------- PLUGINS WITHOUT ENTER & SHIFT ENTER FUNCTIONALITY -------------
+// Essentials plugin has Clipboard, ShiftEnter, Enter Typing, Undo plugins
+// in order to remove the ENTER NEW PARAGRAPH functionality, we will remove Enter & Shift Enter plugins
+const pluginsNoEnter = [ ...pluginsAll ];
+
+const indexOfEssentials = pluginsNoEnter.indexOf( Essentials );
+pluginsNoEnter.splice( indexOfEssentials, 1 );
+pluginsNoEnter.push( Clipboard, Typing, Undo );
+
 // Plugins to include in the build.
-ClassicEditor.builtinPlugins = plugins;
-InlineEditor.builtinPlugins = plugins;
+ClassicEditor.builtinPlugins = pluginsAll;
+InlineEditor.builtinPlugins = pluginsAll;
+InlineEditorSingleParagraph.builtinPlugins = pluginsNoEnter;
 
 const config = {
 	toolbar: {
@@ -127,7 +141,8 @@ const config = {
 // Editor configuration.
 ClassicEditor.defaultConfig = config;
 InlineEditor.defaultConfig = config;
+InlineEditorSingleParagraph.defaultConfig = config;
 
 export default {
-	ClassicEditor, InlineEditor
+	ClassicEditor, InlineEditor, InlineEditorSingleParagraph
 };

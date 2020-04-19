@@ -8,15 +8,16 @@
             max-width: 800px;
             margin: 20px auto;
         }
-    </style>
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
 
 <h1>CKEditor 5 – super build</h1>
 
-<div id="classic-editor">
-    <h2>Classic</h2>
+<h2>Classic</h2>
 
+<div id="classic-editor">
     <p>This is an instance of the <a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/overview.html#classic-editor">classic editor build</a>.</p>
 </div>
 
@@ -24,11 +25,18 @@
 <hr>
 <br>
 
-
+<h2>Inline</h2>
 <div id="inline-editor">
-    <h2>Inline</h2>
-
     <p>This is an instance of the <a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/overview.html#inline-editor">inline editor build</a>.</p>
+</div>
+
+<br>
+<hr>
+<br>
+
+<h2>Inline Single Paragraph</h2>
+<div id="inline-editor-single-paragraph">
+    <p>This is an instance of the inline single paragraph <strong>WITHOUT the HEADING plugin</strong> removed at index.html (see removePlugins: ....)</p>
 </div>
 
 <script src="../build/ckeditor.js"></script>
@@ -43,7 +51,63 @@
         .create( document.querySelector( '#inline-editor' ) )
         .catch( err => {
             console.error( err.stack );
-        } );
+		} );
+
+	CKEDITOR.InlineEditorSingleParagraph
+	.create( document.querySelector( '#inline-editor-single-paragraph' ),
+		{removePlugins: [ 'Heading',]}
+	)
+	.then( editor => {
+    	editor.editing.view.document.on( 'keydown', ( evt, data ) => {
+
+		if ( data.keyCode == 13 ) {
+			console.log( 'ENTER KEY DOWN!!' );
+			// data.stop
+			// data.preventDefault();
+			// evt.stop();
+			// return false;
+		}
+		},);
+		editor.editing.view.document.on( 'keyup', ( evt, data ) => {
+			console.log( editor.getData() );
+			if ( data.keyCode == 13 ) {
+				console.log( 'ENTER KEY UP!!' );
+			}
+		} );
+
+	})
+	.catch( err => {
+		console.error( err.stack );
+	} );
+
+	//*** PRINTS all available plugins ***
+
+	// console.log(CKEDITOR.ClassicEditor.builtinPlugins.map( plugin => plugin.pluginName ));
+
+	//***  JQuery to keyup/down events ***
+
+	// $(document).ready(function() {
+	// 	console.log('READY');
+	// 	$('.ck-editor').keyup(function(event) {
+	// 		console.log('FUNCTION up');
+	// 		if (event.keyCode == 13) {
+	// 			console.log("TEST");
+	// 			event.preventDefault();
+	// 			event.stopPropagation();
+	// 			return false;
+	// 		}
+	// 	});
+	// 	$('.ck-editor').keydown(function(event) {
+	// 		console.log('FUNCTION down');
+	// 		if (event.keyCode == 13) {
+	// 			console.log("TEST");
+	// 			event.preventDefault();
+	// 			event.stopPropagation();
+	// 			return false;
+	// 		}
+	// 	});
+	// });
+
 </script>
 
 </body>
