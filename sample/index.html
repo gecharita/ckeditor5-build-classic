@@ -7,6 +7,7 @@
         body {
             max-width: 800px;
             margin: 20px auto;
+			background: white;
         }
 	</style>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -19,6 +20,16 @@
 
 <div id="classic-editor">
     <p>This is an instance of the <a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/overview.html#classic-editor">classic editor build</a>.</p>
+</div>
+
+<br>
+<hr>
+<br>
+
+<h2>Classic Single Paragraph</h2>
+
+<div id="classic-editor-single-p">
+    <p>This is an instance of the <a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/overview.html#classic-editor">classic editor with single paragraph build</a>.</p>
 </div>
 
 <br>
@@ -43,6 +54,12 @@
 <script>
     CKEDITOR.ClassicEditor
         .create( document.querySelector( '#classic-editor' ) )
+        .catch( err => {
+            console.error( err.stack );
+		} );
+
+		CKEDITOR.ClassicEditorSingleParagraph
+        .create( document.querySelector( '#classic-editor-single-p' ) )
         .catch( err => {
             console.error( err.stack );
         } );

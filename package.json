@@ -1,6 +1,6 @@
 {
-  "name": "@gecharita/ckeditor5-build-classic",
-  "version": "19.0.0",
+  "name": "@gecharita/ckeditor5-super-build",
+  "version": "1.0.0",
   "description": "Super Build: CKEditor 5 classic & inline with extra plugins",
   "keywords": [
     "ckeditor5-build",
