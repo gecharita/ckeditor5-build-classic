@@ -16,6 +16,17 @@
 
 <h1>CKEditor 5 – super build</h1>
 
+
+<h2>Classic Autocomplete</h2>
+
+<div id="classic-autocomplete-editor">
+    <p>This is an instance of the <a href="https://ckeditor.com/docs/ckeditor5/latest/builds/guides/overview.html#classic-editor">classic editor build</a>.</p>
+</div>
+
+<br>
+<hr>
+<br>
+
 <h2>Classic</h2>
 
 <div id="classic-editor">
@@ -52,13 +63,19 @@
 
 <script src="../build/ckeditor.js"></script>
 <script>
-    CKEDITOR.ClassicEditor
+    CKEDITOR.ClassicEditorAutocomplete
+        .create( document.querySelector( '#classic-autocomplete-editor' ) )
+        .catch( err => {
+            console.error( err.stack );
+		} );
+
+	CKEDITOR.ClassicEditor
         .create( document.querySelector( '#classic-editor' ) )
         .catch( err => {
             console.error( err.stack );
 		} );
 
-		CKEDITOR.ClassicEditorSingleParagraph
+	CKEDITOR.ClassicEditorSingleParagraph
         .create( document.querySelector( '#classic-editor-single-p' ) )
         .catch( err => {
             console.error( err.stack );

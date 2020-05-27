@@ -10,24 +10,28 @@ import { plugins as pluginsClassic, config as configClassic } from './config/cla
 import { plugins as pluginsClassicSingleP, config as configClassicSingleP } from './config/classic-single-paragraph-config';
 import { plugins as pluginsInline, config as configInline } from './config/inline-config';
 import { plugins as pluginsInlineSingleP, config as configInlineSingleP } from './config/inline-single-paragraph-config';
+import { plugins as pluginsAuto, config as configAuto } from './config/classic-autocomplete';
 
 class ClassicEditor extends ClassicEditorBase {}
 class ClassicEditorSingleParagraph extends ClassicEditorBase {}
 class InlineEditor extends InlineEditorBase {}
 class InlineEditorSingleParagraph extends InlineEditorBase {}
+class ClassicEditorAutocomplete extends ClassicEditorBase {}
 
 // Plugins to include in the build.
 ClassicEditor.builtinPlugins = pluginsClassic;
 ClassicEditorSingleParagraph.builtinPlugins = pluginsClassicSingleP;
 InlineEditor.builtinPlugins = pluginsInline;
 InlineEditorSingleParagraph.builtinPlugins = pluginsInlineSingleP;
+ClassicEditorAutocomplete.builtinPlugins = pluginsAuto;
 
 // Editor configuration.
 ClassicEditor.defaultConfig = configClassic;
 ClassicEditorSingleParagraph.defaultConfig = configClassicSingleP;
 InlineEditor.defaultConfig = configInline;
 InlineEditorSingleParagraph.defaultConfig = configInlineSingleP;
+ClassicEditorAutocomplete.defaultConfig = configAuto;
 
 export default {
-	ClassicEditor, ClassicEditorSingleParagraph, InlineEditor, InlineEditorSingleParagraph
+	ClassicEditor, ClassicEditorSingleParagraph, InlineEditor, InlineEditorSingleParagraph, ClassicEditorAutocomplete
 };
