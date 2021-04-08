@@ -110,14 +110,14 @@ export const config = {
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
 	language: 'en'
-	// ,
-	// mention: {
-	// 	feeds: [
-	// 		{
-	// 			marker: '@',
-	// 			feed: [ '@Oliver', '@Stefanos', '@Lukas', '@Anastasios', '@George', '@Katia' ],
-	// 			minimumCharacters: 0
-	// 		}
-	// 	]
-	// }
+	,
+	mention: {
+		feeds: [
+			{
+				marker: '@',
+				feed: [ '@Oliver', '@Stefanos', '@Lukas', '@Anastasios', '@George', '@Katia' ],
+				minimumCharacters: 0
+			}
+		]
+	}
 };
