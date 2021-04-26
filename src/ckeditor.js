@@ -32,6 +32,12 @@ InlineEditor.defaultConfig = configInline;
 InlineEditorSingleParagraph.defaultConfig = configInlineSingleP;
 ClassicEditorAutocomplete.defaultConfig = configAuto;
 
+ClassicEditor.link = {link: {addTargetToExternalLinks: true}};
+ClassicEditorSingleParagraph.link = {link: {addTargetToExternalLinks: true}};
+InlineEditor.link = {link: {addTargetToExternalLinks: true}};
+InlineEditorSingleParagraph.link = {link: {addTargetToExternalLinks: true}};
+ClassicEditorAutocomplete.link = {link: {addTargetToExternalLinks: true}};
+
 export default {
 	ClassicEditor, ClassicEditorSingleParagraph, InlineEditor, InlineEditorSingleParagraph, ClassicEditorAutocomplete
 };
