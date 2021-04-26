@@ -25,6 +25,7 @@ import Font from '@ckeditor/ckeditor5-font/src/font';
 import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
 import TodoList from '@ckeditor/ckeditor5-list/src/todolist';
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
+import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/base64uploadadapter';
 
 // ****************** PLUGINS ************************
 export const plugins = [
@@ -54,7 +55,8 @@ export const plugins = [
 	TextTransformation,
 	Font,
 	Alignment,
-	TodoList
+	TodoList,
+	Base64UploadAdapter
 ];
 
 // ****************** TOOLBAR CONFIG ************************
@@ -81,8 +83,7 @@ export const config = {
 			'|',
 			'undo',
 			'redo',
-			'link',
-			'|'
+			'link'
 			// '|',
 			// '|',
 			// '|',

@@ -26,6 +26,7 @@ import Alignment from '@ckeditor/ckeditor5-alignment/src/alignment';
 import TodoList from '@ckeditor/ckeditor5-list/src/todolist';
 import Essentials from '@ckeditor/ckeditor5-essentials/src/essentials';
 import Mention from '@ckeditor/ckeditor5-mention/src/mention';
+import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/base64uploadadapter';
 
 // ****************** PLUGINS ************************
 export const plugins = [
@@ -56,7 +57,8 @@ export const plugins = [
 	Font,
 	Alignment,
 	TodoList,
-	Mention
+	Mention,
+	Base64UploadAdapter
 ];
 
 // ****************** TOOLBAR CONFIG ************************
@@ -109,8 +111,7 @@ export const config = {
 		]
 	},
 	// This value must be kept in sync with the language defined in webpack.config.js.
-	language: 'en'
-	,
+	language: 'en',
 	mention: {
 		feeds: [
 			{

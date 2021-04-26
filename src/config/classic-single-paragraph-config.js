@@ -27,6 +27,7 @@ import TodoList from '@ckeditor/ckeditor5-list/src/todolist';
 import Clipboard from '@ckeditor/ckeditor5-clipboard/src/clipboard';
 import Typing from '@ckeditor/ckeditor5-typing/src/typing';
 import Undo from '@ckeditor/ckeditor5-undo/src/undo';
+import Base64UploadAdapter from '@ckeditor/ckeditor5-upload/src/adapters/base64uploadadapter';
 
 // ************************ PLUGINS WITHOUT ENTER & SHIFT ENTER FUNCTIONALITY ************************
 // <<Essentials>> plugin has << Clipboard, ShiftEnter, Enter Typing, Undo >> plugins
@@ -60,7 +61,8 @@ export const plugins = [
 	TextTransformation,
 	Font,
 	Alignment,
-	TodoList
+	TodoList,
+	Base64UploadAdapter
 ];
 
 // ****************** TOOLBAR CONFIG ************************
